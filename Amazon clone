@@ -1,0 +1,126 @@
+HTML:
+-----------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Amazon Clone</h1>
+        <input type="text" placeholder="Search for products..." id="searchBox">
+        <button onclick="searchProducts()">Search</button>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#mobiles">Mobiles</a></li>
+            <li><a href="#laptops">Laptops</a></li>
+            <li><a href="#shoes">Shoes</a></li>
+            <li><a href="#electronics">Electronics</a></li>
+        </ul>
+    </nav>
+    <section id="products">
+        <div class="category" id="mobiles">
+            <h2>Mobiles</h2>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71hIfcIPyxS._AC_SL1500_.jpg" alt="iPhone 14 Pro">
+                <p>iPhone 14 Pro</p>
+                <p>$999</p>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81t6Av5DvXL._AC_SL1500_.jpg" alt="Samsung Galaxy S23">
+                <p>Samsung Galaxy S23</p>
+                <p>$799</p>
+            </div>
+        </div>
+        <div class="category" id="laptops">
+            <h2>Laptops</h2>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81aKqaMII3L._AC_SL1500_.jpg" alt="MacBook Pro">
+                <p>MacBook Pro 16"</p>
+                <p>$2,499</p>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71NLGB-JcSL._AC_SL1500_.jpg" alt="Dell XPS 15">
+                <p>Dell XPS 15</p>
+                <p>$1,799</p>
+            </div>
+        </div>
+        <div class="category" id="shoes">
+            <h2>Shoes</h2>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61N8fZul0ML._AC_UL1500_.jpg" alt="Nike Running Shoes">
+                <p>Nike Running Shoes</p>
+                <p>$120</p>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/81v6HEzMt9L._AC_UL1500_.jpg" alt="Adidas Sneakers">
+                <p>Adidas Sneakers</p>
+                <p>$95</p>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
+
+CSS:
+-----------------------------------------------------------------------------------------------
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f8f8f8;
+}
+header {
+    background: #232f3e;
+    color: white;
+    padding: 10px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    background: #f3a847;
+    padding: 10px;
+}
+nav ul li {
+    margin: 0 15px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.category {
+    margin: 20px;
+}
+.product {
+    display: inline-block;
+    margin: 15px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+.product img {
+    width: 150px;
+    height: 150px;
+
+JavaScript:
+----------------------------------------------------------------------------------------------------
+function searchProducts() {
+    let searchValue = document.getElementById("searchBox").value.toLowerCase();
+    let products = document.querySelectorAll(".product");
+    
+    products.forEach(product => {
+        let productName = product.querySelector("p").textContent.toLowerCase();
+        if (productName.includes(searchValue)) {
+            product.style.display = "inline-block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
